@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+using namespace std;
+int solve()
+{
+    int n;
+    cin>>n;
+    string s;
+    cin>>s;
+    unordered_map<char,long long>m;
+    for(int i=0;i<n;i++)
+    {
+        m[s[i]]++;
+    }
+    long long ma=0;
+    for(auto it:m)
+    {
+        ma=max(ma,it.second);
+    }
+    if(2*ma>n)             //if ele with max freq has freq<=n/2 it can be removed always if length is even and one ele will be left if length is odd
+    return 2*ma-n;         //but in opposite case the number of extra elements will be there at last as they will not find a pair to be removed
+    else if(n%2==0)
+    return 0;              //n%2==0
+ 
+    return 1;              //n%2!=0
+ 
+}
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        cout<<solve()<<"\n";
+    }
+}
